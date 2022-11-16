@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  redisinsight:
+    container_name: redisinsight
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    privileged: true
+    cap_add:
+      - IPC_LOCK
+    ports:
+      - 5000:5000
+
+  redis:
+    container_name: redis
+    image: redis:latest
+    restart: always
+    ports:
+      - 6379:6379
+    
